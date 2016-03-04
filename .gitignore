@@ -1,1 +1,5 @@
 .ipynb_checkpoints/
+
+# Only include the short csv file
+*.csv
+!brfss2014_short.csv
