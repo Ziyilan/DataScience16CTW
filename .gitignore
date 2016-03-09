@@ -3,3 +3,9 @@
 # Only include the short csv file
 *.csv
 !brfss2014_short.csv
+
+# oath keys
+website/auth.js
+
+# node_modules
+node_modules/

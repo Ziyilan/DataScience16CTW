@@ -15,7 +15,7 @@ router.question = function(req, res, next) {
 };
 
 router.search = function(rqe, res, next){
-	var url = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=sleep%20deprive%20health&page=1&sort=newest&api-key=a25ad4c53965626d48d407fad419435c:5:74652802";
+	var url = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=purposeful&page=1&section_name=Science&type_of_material=Blog&api-key=a25ad4c53965626d48d407fad419435c:5:74652802";
 	request(url, function(error, response, body){
 	var parse = JSON.parse(body);
 	console.log(parse);
