@@ -2,6 +2,7 @@ var express = require('express');
 var router = {};
 var path = require("path");
 var request = require('request');
+var auth = require('../auth.js')
 
 
 
@@ -15,7 +16,7 @@ router.question = function(req, res, next) {
 };
 
 router.search = function(rqe, res, next){
-	var url = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=purposeful&page=1&section_name=Science&type_of_material=Blog&api-key=a25ad4c53965626d48d407fad419435c:5:74652802";
+	var url = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=sleep&section_name=Science&type_of_material=Blog&page=0&api-key="+auth.NYTIMES_API_KEY;
 	request(url, function(error, response, body){
 	var parse = JSON.parse(body);
 	console.log(parse);
