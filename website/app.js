@@ -5,11 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var config = require('./auth.js');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var passport = require('passport');
 var session = require('express-session');
-var auth = require('./auth.js');
+// var auth = require('./auth.js');
 var routes = require("./routes/index");
 
 var app = express();
