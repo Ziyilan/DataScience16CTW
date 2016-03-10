@@ -9,7 +9,7 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var passport = require('passport');
 var session = require('express-session');
 // var auth = require('./auth.js');
-var auth = process.env.auth;
+var auth = require('./auth_public.js');
 var routes = require("./routes/index");
 
 console.log(JSON.stringify(auth.FACEBOOK_APP_ID))

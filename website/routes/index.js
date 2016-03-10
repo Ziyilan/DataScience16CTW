@@ -3,7 +3,7 @@ var router = {};
 var path = require("path");
 var request = require('request');
 // var auth = require('../auth.js')
-var auth = process.env.auth;
+var auth = require('../auth_public.js');
 
 
 
