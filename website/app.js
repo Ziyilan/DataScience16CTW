@@ -18,7 +18,7 @@ var app = express();
 
 var PORT = process.env.PORT || 3000;
 
-mongoose.connect('mongodb://localhost/CTW');
+mongoose.connect(process.env.MONGO_URI);
 var User = require('./models/model.js');
 
 app.set('view engine', 'handlebars');
