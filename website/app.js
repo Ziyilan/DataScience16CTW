@@ -9,6 +9,7 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var passport = require('passport');
 var session = require('express-session');
 // var auth = require('./auth.js');
+var auth = process.env.auth;
 var routes = require("./routes/index");
 
 var app = express();
