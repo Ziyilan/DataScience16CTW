@@ -12,6 +12,8 @@ var session = require('express-session');
 var auth = process.env.auth;
 var routes = require("./routes/index");
 
+console.log(JSON.stringify(auth))
+
 var app = express();
 
 var PORT = process.env.PORT || 3000;
