@@ -12,7 +12,7 @@ var session = require('express-session');
 var auth = process.env.auth;
 var routes = require("./routes/index");
 
-console.log(JSON.stringify(auth))
+console.log(JSON.stringify(auth.FACEBOOK_APP_ID))
 
 var app = express();
 
