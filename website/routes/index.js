@@ -5,8 +5,6 @@ var request = require('request');
 // var auth = require('../auth.js')
 var auth = require('../auth_public.js');
 
-
-
 router.home = function(req, res, next) {
   res.sendFile('main.html', { root: path.join(__dirname, '../public') });
 };
@@ -25,11 +23,8 @@ router.search = function(rqe, res, next){
 	});
 };
 
-router.fbCallback = function(req, res, next) {
-    passport.authenticate('facebook', { failureRedirect: '/' }),
-    function(req, res) {
-        res.redirect('/');
-    }
-};
+router.getUser = function(req, res) {
+	res.json(req.user);
+}
 
 module.exports = router;
