@@ -19,6 +19,7 @@ app.controller("mainController", function ($scope, $http) {
 	$http.get('/api/getUser')
 		.success(function(user) {
 			$scope.user = user;
+			console.log(user)
 			if (user) {
 				$scope.contentTemplatePath = "views/question.html"
 			} else {
