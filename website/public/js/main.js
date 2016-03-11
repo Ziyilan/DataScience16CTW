@@ -47,7 +47,15 @@ app.controller("mainController", function ($scope, $http) {
 		})
 		.error(handleError);
 
+	var isInt = function(n) {
+	   return n % 1 === 0;
+	}
+
 	var getPercentile = function(callbackFunc) {
+		if (isInt($scope.answers.sleep)) {
+			// If this is an int, then add decimal places
+			$scope.answers.sleep.toFized(1);
+		}
 		var url = 'https://dozeoff-python-server.herokuapp.com/percentile/' + $scope.answers.sleep;
 	    $http({
 	        method: 'GET',
