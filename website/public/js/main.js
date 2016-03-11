@@ -39,10 +39,31 @@ app.controller("mainController", function ($scope, $http) {
 			$scope.user = user;
 			console.log(user)
 			if (user) {
-				$scope.contentTemplatePath = "views/question.html"
+				$scope.contentTemplatePath = "views/q1.html"
 			} else {
 				$scope.contentTemplatePath = "views/loginPage.html"
 			}
 		})
 		.error(handleError);
+
+	$scope.nextQues = function() {
+		if ($scope.contentTemplatePath == "views/q1.html") {
+			$scope.contentTemplatePath = "views/q2.html"
+		}
+		if ($scope.contentTemplatePath == "views/q2.html") {
+			$scope.contentTemplatePath = "views/q3.html"
+		}
+		if ($scope.contentTemplatePath == "views/q3.html") {
+			$scope.contentTemplatePath = "views/q4.html"
+		}
+		if ($scope.contentTemplatePath == "views/q4.html") {
+			$scope.contentTemplatePath = "views/q5.html"
+		}
+		if ($scope.contentTemplatePath == "views/q5.html") {
+			$scope.contentTemplatePath = "views/results.html"
+		}
+		if ($scope.contentTemplatePath == "views/q1.html") {
+			$scope.contentTemplatePath = "views/q2.html"
+		}
+	}
 });
