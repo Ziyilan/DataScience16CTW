@@ -1,11 +1,9 @@
-//This type of file is usually found in app/models/robotModel.js
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-// Create a Schema
-var twoteSchema = mongoose.Schema({
-  content: String,
-  author: String
+var Twote = new Schema({
+	text: String,
+	creator: {type: Schema.Types.ObjectId, ref: 'User'}
 });
 
-module.exports = mongoose.model("twote", twoteSchema);
-
+module.exports = mongoose.model('Twote', Twote);

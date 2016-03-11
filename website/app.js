@@ -11,13 +11,18 @@ var passport = require('passport');
 var session = require('express-session');
 var auth = require('./auth.js');
 var routes = require("./routes/index");
+var Twote = require('./models/twotemodel.js')
+
 
 var app = express();
 
 var PORT = process.env.PORT || 3000;
 
-mongoose.connect('mongodb://localhost/CTW');
+mongoose.connect('mongodb://localhost/twoter');
+
+
 var User = require('./models/model.js');
+
 
 app.set('view engine', 'handlebars');
 
@@ -71,6 +76,11 @@ passport.use(new FacebookStrategy({
 app.get('/', routes.home);
 app.get('/question', routes.question);
 app.get('/search', routes.search);
+
+var newTwote = require('./routes/newTwote.js')
+var delTwote = require('./routes/delTwote.js')
+app.post('/newTwote', newTwote.newTwotePOST);
+app.post('/delTwote', delTwote.delTwotePOST);
 
 
 
