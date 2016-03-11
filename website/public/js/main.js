@@ -32,7 +32,7 @@ app.config(function ($routeProvider, $locationProvider) {
 
 app.controller("mainController", function ($scope, $http) {
 	$scope.contentTemplatePath = "";
-	// $scope.contentTemplatePath = "views/loginPage.html"
+	$scope.answers = {};
 	
 	$http.get('/api/getUser')
 		.success(function(user) {
@@ -50,20 +50,33 @@ app.controller("mainController", function ($scope, $http) {
 		if ($scope.contentTemplatePath == "views/q1.html") {
 			$scope.contentTemplatePath = "views/q2.html"
 		}
-		if ($scope.contentTemplatePath == "views/q2.html") {
+		else if ($scope.contentTemplatePath == "views/q2.html") {
 			$scope.contentTemplatePath = "views/q3.html"
 		}
-		if ($scope.contentTemplatePath == "views/q3.html") {
+		else if ($scope.contentTemplatePath == "views/q3.html") {
 			$scope.contentTemplatePath = "views/q4.html"
 		}
-		if ($scope.contentTemplatePath == "views/q4.html") {
+		else if ($scope.contentTemplatePath == "views/q4.html") {
 			$scope.contentTemplatePath = "views/q5.html"
 		}
-		if ($scope.contentTemplatePath == "views/q5.html") {
+		else if ($scope.contentTemplatePath == "views/q5.html") {
 			$scope.contentTemplatePath = "views/results.html"
 		}
-		if ($scope.contentTemplatePath == "views/q1.html") {
+		console.log($scope.answers)
+	};
+	$scope.prevQues = function() {
+		if ($scope.contentTemplatePath == "views/q2.html") {
+			$scope.contentTemplatePath = "views/q1.html"
+		}
+		else if ($scope.contentTemplatePath == "views/q3.html") {
 			$scope.contentTemplatePath = "views/q2.html"
 		}
-	}
+		else if ($scope.contentTemplatePath == "views/q4.html") {
+			$scope.contentTemplatePath = "views/q3.html"
+		}
+		else if ($scope.contentTemplatePath == "views/q5.html") {
+			$scope.contentTemplatePath = "views/q4.html"
+		}
+		console.log($scope.answers)
+	};
 });
