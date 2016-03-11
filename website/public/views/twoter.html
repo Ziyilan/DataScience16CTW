@@ -1,11 +1,18 @@
-<h1>Message Board</h1>
-<p>Feel free to chat about sleep, or anything else!</p>
 <div class="row">
 	<div class="col-sm-9">
-		<form id="new-twote-form" action="overrideMe" method="POST">
+		<h1>Self-Help Group</h1>
+		<p>Feel free to chat about how little you sleep, or anything else!</p>
+	</div>
+	<div class="col-sm-3">
+		<button class="btn btn-primary btn-lg" ng-click="prevQues()">Back to Results</button>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-9">
+		<form id="new-twote-form">
 			<h4>New Post</h4>
-			<input type="text" name="text" class="form-control" placeholder="Enter a New Post"/><br/>
-			<input type="submit" value="Submit" class="btn btn-default">
+			<input type="text" name="text" class="form-control" ng-model="newTwoteText" placeholder="Enter a New Post"/><br/>
+			<input type="submit" value="Submit" class="btn btn-default" ng-click="newTwote(newTwoteText)">
 		</form>
 		<br><br>
 		<div id="twote-wall" ng-repeat="twote in twotes">
@@ -16,7 +23,6 @@
 	</div>
 	<div class="col-sm-3">
 		<h4>{{user.name}}</h4>
-		<a href="/logout">Logout</a>
 		<br><br>
 		<div class="btn.group-vertical" ng-repeat="user in users">
 			<div class="button-checkbox">

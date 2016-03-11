@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var Twote = new Schema({
 	text: String,
-	creator: {type: Schema.Types.ObjectId, ref: 'User'}
+	creator: {type: Schema.Types.ObjectId, ref: 'user'}
 });
 
 module.exports = mongoose.model('Twote', Twote);

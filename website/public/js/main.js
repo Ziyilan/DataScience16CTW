@@ -37,14 +37,14 @@ app.controller("mainController", function ($scope, $http) {
 	$scope.twotes = {};
 	$scope.answers = {};
 	// FOR DEV, prefill answers so it goes quicker
-	// $scope.answers = {
-	// 	age: 20,
-	// 	sex: "1",
-	// 	married: "0",
-	// 	children: "0",
-	// 	employment: "6",
-	// 	sleep: 7.2
-	// };
+	$scope.answers = {
+		age: 20,
+		sex: "1",
+		married: "0",
+		children: "0",
+		employment: "6",
+		sleep: 7.2
+	};
 	$scope.results = {};
 	
 	$http.get('/api/getUser')
@@ -58,6 +58,16 @@ app.controller("mainController", function ($scope, $http) {
 			}
 		})
 		.error(handleError);
+
+	var getTwotes = function() {
+		$http.get('/api/getTwotes')
+			.success(function(twotes) {
+				$scope.twotes = twotes;
+				console.log('got all twotes')
+			})
+			.error(handleError);
+	}
+	getTwotes();
 
 	var startDrawing = function() {
 		google.charts.load('current', {packages: ['corechart', 'bar']});
@@ -220,10 +230,10 @@ app.controller("mainController", function ($scope, $http) {
 				});
 			});
 			if ($scope.answers.sleep > 8) {
-				$scope.times.message = "Learn More About Sleep Deprivation"
+				$scope.times.message = "Learn More About Over-Sleeping"
 				getNYTimesOverSleep();
 			} else {
-				$scope.times.message = "Learn More About Over-Sleeping"
+				$scope.times.message = "Learn More About Sleep Deprivation"
 				getNYTimesSleepDep();
 			}
 		}
@@ -248,10 +258,22 @@ app.controller("mainController", function ($scope, $http) {
 		else if ($scope.contentTemplatePath == "views/results.html") {
 			$scope.contentTemplatePath = "views/q6.html"
 		}
+		else if ($scope.contentTemplatePath == "views/twoter.html") {
+			$scope.contentTemplatePath = "views/results.html"
+		}
 		console.log($scope.answers)
 	};
 
 	$scope.gotoBoard = function() {
 		$scope.contentTemplatePath = "views/twoter.html"
 	};
+
+	$scope.newTwote = function(text) {
+		$http.post('/newTwote', {twoteText:text})
+			.success(function(thisTwote) {
+				console.log('got new twote: '+thisTwote.text)
+				getTwotes();
+			})
+			.error(handleError);
+	}
 });
