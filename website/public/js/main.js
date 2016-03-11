@@ -37,14 +37,14 @@ app.controller("mainController", function ($scope, $http) {
 	$scope.twotes = {};
 	$scope.answers = {};
 	// FOR DEV, prefill answers so it goes quicker
-	$scope.answers = {
-		age: 20,
-		sex: "1",
-		married: "0",
-		children: "0",
-		employment: "6",
-		sleep: 7.2
-	};
+	// $scope.answers = {
+	// 	age: 20,
+	// 	sex: "1",
+	// 	married: "0",
+	// 	children: "0",
+	// 	employment: "6",
+	// 	sleep: 7.2
+	// };
 	$scope.results = {};
 	
 	$http.get('/api/getUser')
