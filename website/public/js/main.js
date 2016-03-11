@@ -33,6 +33,8 @@ app.config(function ($routeProvider, $locationProvider) {
 app.controller("mainController", function ($scope, $http) {
 	$scope.contentTemplatePath = "";
 	$scope.times = {};
+	$scope.users = {};
+	$scope.twotes = {};
 	$scope.answers = {};
 	// FOR DEV, prefill answers so it goes quicker
 	// $scope.answers = {
@@ -247,5 +249,9 @@ app.controller("mainController", function ($scope, $http) {
 			$scope.contentTemplatePath = "views/q6.html"
 		}
 		console.log($scope.answers)
+	};
+
+	$scope.gotoBoard = function() {
+		$scope.contentTemplatePath = "views/twoter.html"
 	};
 });

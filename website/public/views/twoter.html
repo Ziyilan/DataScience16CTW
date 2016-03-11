@@ -1,0 +1,28 @@
+<h1>Message Board</h1>
+<p>Feel free to chat about sleep, or anything else!</p>
+<div class="row">
+	<div class="col-sm-9">
+		<form id="new-twote-form" action="overrideMe" method="POST">
+			<h4>New Post</h4>
+			<input type="text" name="text" class="form-control" placeholder="Enter a New Post"/><br/>
+			<input type="submit" value="Submit" class="btn btn-default">
+		</form>
+		<br><br>
+		<div id="twote-wall" ng-repeat="twote in twotes">
+			<div class="well" id="{{twote._id}}" data-creator-id="{{twote.creator._id}}">
+				{{twote.text}} --{{twote.creator.name}}
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-3">
+		<h4>{{user.name}}</h4>
+		<a href="/logout">Logout</a>
+		<br><br>
+		<div class="btn.group-vertical" ng-repeat="user in users">
+			<div class="button-checkbox">
+				<button type="button" class="btn user-btn" data-color="primary" id="{{user._id}}">{{user.name}}</button>
+				<input type="checkbox" class="hidden" />
+			</div>
+		</div>
+	</div>
+</div>
