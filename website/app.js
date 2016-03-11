@@ -8,8 +8,8 @@ var mongoose = require('mongoose');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var passport = require('passport');
 var session = require('express-session');
-// var auth = require('./auth.js');
-var auth = require('./auth_public.js');
+var auth = require('./auth.js');
+// var auth = require('./auth_public.js');
 var routes = require("./routes/index");
 
 var app = express();
@@ -67,7 +67,8 @@ passport.use(new FacebookStrategy({
 
 app.get('/', routes.home);
 app.get('/question', routes.question);
-app.get('/search', routes.search);
+app.get('/searchOverSleep', routes.searchOverSleep);
+app.get('/searchSleepDep', routes.searchSleepDep);
 app.get('/api/getUser', routes.getUser);
 
 

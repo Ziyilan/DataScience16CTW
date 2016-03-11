@@ -9,6 +9,10 @@
 	    </div>
 	</form>
 	<h2>You said you got: {{answers.sleep}} hours of sleep a night.</h2>
-	<h2>You are in the {{results.percentile}} percentile of all people.</h2>
+	<h2>You are in the {{results.percentile}} percentile of all people, meaning that {{results.numPeople}} people in the US sleep more than you.</h2>
 	<h2>People in your demographics got an average of {{results.demoSleep}} hours of sleep a night.</h2>
+
+	<div id="bar_chart_div"></div>
+	<div id="pie_chart_div"></div>
+	<a class="btn btn-lg btn-primary" href="https://{{times.url}}">{{times.message}}</a>
 </center>
