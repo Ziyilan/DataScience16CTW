@@ -4,6 +4,8 @@ var path = require("path");
 var request = require('request');
 var auth = require('../auth.js')
 // var auth = require('../auth_public.js');
+var User = require('../models/model.js');
+var Twote = require('../models/twoteModel.js')
 
 router.home = function(req, res, next) {
   res.sendFile('main.html', { root: path.join(__dirname, '../public') });
@@ -14,6 +16,21 @@ router.question = function(req, res, next) {
 	res.redirect('/')
 	// res.sendFile('question.html', { root: path.join(__dirname, '../public') });
 };
+
+router.board = function(req, res, next) {
+	Twote.find({})
+	    .sort({_id: -1})
+	    .populate('creator')
+	    .exec(function(err, twotes) {
+	        User.find({}, function(err, users) {
+	            res.render('twoter', {
+	                user: req.user,
+	                twotes: twotes,
+	                users: users
+	            });
+	        })
+	    });
+}
 
 router.searchOverSleep = function(req, res, next){
 	// var url = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=sleep&section_name=Science&type_of_material=Blog&page=0&api-key="+auth.NYTIMES_API_KEY;

@@ -1,0 +1,37 @@
+{{{{raw-helper}}}}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-9">
+			<form id="new-twote-form" action="overrideMe" method="POST">
+				<h4>New Twote</h4>
+				<input type="text" name="text" class="form-control" placeholder="Enter a New Twote"/><br/>
+				<input type="submit" value="Submit" class="btn btn-default">
+			</form>
+			<br><br>
+			<div id="twote-wall">
+				{{#each twotes}}
+					<div class="well" id="{{_id}}" data-creator-id="{{creator._id}}">
+						{{text}} --{{creator.name}}<br>
+						{{#ifCond creator.name ../user.name}}
+							<input type="button" value="Delete" class="btn btn-danger btn-xs delete-twote-btn">
+						{{/ifCond}}
+					</div>
+				{{/each}}
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<h4>{{user.name}}</h4>
+			<a href="/logout">Logout</a>
+			<br><br>
+			<div class="btn.group-vertical">
+				{{#each users}}
+					<div class="button-checkbox">
+						<button type="button" class="btn user-btn" data-color="primary" id="{{_id}}">{{name}}</button>
+						<input type="checkbox" class="hidden" />
+					</div>
+				{{/each}}
+			</div>
+		</div>
+	</div>
+</div>
+{{{{/raw-helper}}}}

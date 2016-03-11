@@ -34,15 +34,15 @@ app.controller("mainController", function ($scope, $http) {
 	$scope.contentTemplatePath = "";
 	$scope.times = {};
 	$scope.answers = {};
-	// FOR DEV
-	$scope.answers = {
-		age: 20,
-		sex: "1",
-		married: "0",
-		children: "0",
-		employment: "6",
-		sleep: 7.2
-	};
+	// FOR DEV, prefill answers so it goes quicker
+	// $scope.answers = {
+	// 	age: 20,
+	// 	sex: "1",
+	// 	married: "0",
+	// 	children: "0",
+	// 	employment: "6",
+	// 	sleep: 7.2
+	// };
 	$scope.results = {};
 	
 	$http.get('/api/getUser')
@@ -136,8 +136,6 @@ app.controller("mainController", function ($scope, $http) {
 			$scope.answers.sleep += ".0";
 		}
 		var url = 'https://dozeoff-python-server.herokuapp.com/percentile/' + $scope.answers.sleep;
-		// FOR DEV PURPOSES
-		// var url = 'https://dozeoff-python-server.herokuapp.com/percentile/7.2';
 	    $http({
 	        method: 'GET',
 	        url: url
@@ -193,7 +191,7 @@ app.controller("mainController", function ($scope, $http) {
 	$scope.nextQues = function() {
 		// FOR DEV, skip to q6
 		if ($scope.contentTemplatePath == "views/q1.html") {
-			$scope.contentTemplatePath = "views/q6.html"
+			$scope.contentTemplatePath = "views/q2.html"
 		}
 		else if ($scope.contentTemplatePath == "views/q2.html") {
 			$scope.contentTemplatePath = "views/q3.html"

@@ -11,6 +11,9 @@ var session = require('express-session');
 var auth = require('./auth.js');
 // var auth = require('./auth_public.js');
 var routes = require("./routes/index");
+var newTwote = require("./routes/newTwote");
+var delTwote = require("./routes/delTwote");
+var hbs = require('hbs')
 
 var app = express();
 
@@ -19,7 +22,12 @@ var PORT = process.env.PORT || 3000;
 mongoose.connect(auth.MONGO_URI);
 var User = require('./models/model.js');
 
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'handlebars');
+hbs.registerHelper('raw-helper', function(options) {
+    return options.fn();
+});
+// app.engine('handlebars', engines.handlebars);
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -67,9 +75,13 @@ passport.use(new FacebookStrategy({
 
 app.get('/', routes.home);
 app.get('/question', routes.question);
+app.get('/board', routes.board);
 app.get('/searchOverSleep', routes.searchOverSleep);
 app.get('/searchSleepDep', routes.searchSleepDep);
 app.get('/api/getUser', routes.getUser);
+
+app.post('/newTwote', newTwote.newTwotePOST);
+app.post('/delTwote', delTwote.delTwotePOST);
 
 
 app.listen(PORT, function () {
