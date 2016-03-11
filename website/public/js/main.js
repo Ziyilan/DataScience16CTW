@@ -32,7 +32,7 @@ app.config(function ($routeProvider, $locationProvider) {
 
 app.controller("mainController", function ($scope, $http) {
 	$scope.contentTemplatePath = "";
-	$scope.contentTemplatePath = "views/loginPage.html"
+	// $scope.contentTemplatePath = "views/loginPage.html"
 	
 	$http.get('/api/getUser')
 		.success(function(user) {
