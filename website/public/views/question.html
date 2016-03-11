@@ -1,14 +1,15 @@
 <center>
 	<h1>Question 1</h1>
 
-	<div class="newt form-group">
-		<!-- <form id="ajax-form" action="overrideMe" method="POST"> -->
-			Are you a male or female ?
-			<br>
-			<input id="tcontent" class="form-control" type="text" name="content"/>
-			<input type="submit" value="Next" class="btn btn-defualt">
-		<!-- </form> -->
-	</div>
+	<form class="form" role="form">
+	    <div class="input-group">
+			<input type="text" class="form-control input-lg text-center" ng-model="q1Text">
+			<span class="input-group-btn">
+				<button type="submit" class="btn btn-primary btn-lg" ng-click="nextQues()">Next</button>
+			</span>
+	    </div>
+	</form>
+
 </center>
 
 <center><a href="/q2">Skip</a><br></center>
