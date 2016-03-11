@@ -3,8 +3,8 @@ var router = {};
 var path = require("path");
 var request = require('request');
 var auth = require('../auth.js')
-// var auth = require('../auth_public.js');
-var User = require('../models/model.js');
+var auth = require('../auth_public.js');
+// var User = require('../models/model.js');
 var Twote = require('../models/twoteModel.js')
 
 router.home = function(req, res, next) {
