@@ -70,7 +70,7 @@ passport.use(new FacebookStrategy({
 app.get('/', routes.home);
 app.get('/question', routes.question);
 app.get('/search', routes.search);
-// app.get('/auth/facebook/callback', routes.fbCallback);
+app.get('/api/getUser', routes.getUser);
 
 
 app.listen(PORT, function () {
