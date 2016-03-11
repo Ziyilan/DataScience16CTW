@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html ng-app ="CTW">
+<html ng-app ="dozeoff">
   <head>
     <meta charset="utf-8">
-    <title>CTW</title>
+    <title>DozeOff</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-sanitize.js"></script>
@@ -12,9 +12,7 @@
     <script type="text/javascript" src="js/main.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
   </head>
-  <body ng-controller="mainController">
-    <div class="container">
-      <center><a href="/auth/facebook">Start Your Sleep Journey</a></center>
-    </div>
+  <body>
+    <div ng-view></div>
   </body>
 </html>

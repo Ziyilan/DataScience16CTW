@@ -25,4 +25,11 @@ router.search = function(rqe, res, next){
 	});
 };
 
+router.fbCallback = function(req, res, next) {
+    passport.authenticate('facebook', { failureRedirect: '/' }),
+    function(req, res) {
+        res.redirect('/');
+    }
+};
+
 module.exports = router;

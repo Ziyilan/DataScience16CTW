@@ -67,13 +67,10 @@ passport.use(new FacebookStrategy({
   }
 ));
 
-
-
-
 app.get('/', routes.home);
 app.get('/question', routes.question);
 app.get('/search', routes.search);
-
+// app.get('/auth/facebook/callback', routes.fbCallback);
 
 
 app.listen(PORT, function () {
@@ -96,14 +93,16 @@ passport.deserializeUser(function(id, done) {
 
 app.get('/auth/facebook',
   passport.authenticate('facebook'),
-  function(req, res){});
+  function(req, res){}
+);
 app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/' }),
   function(req, res) {
     res.redirect('/question');
-  });
+  }
+);
 
-  app.get('/logout', function(req, res){
+app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
