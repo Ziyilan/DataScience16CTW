@@ -11,7 +11,8 @@ router.home = function(req, res, next) {
 
 router.question = function(req, res, next) {
 	console.log("got here");
-  res.sendFile('question.html', { root: path.join(__dirname, '../public') });
+	res.redirect('/')
+	// res.sendFile('question.html', { root: path.join(__dirname, '../public') });
 };
 
 router.search = function(rqe, res, next){
