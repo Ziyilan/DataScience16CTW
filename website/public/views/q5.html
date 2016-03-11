@@ -6,16 +6,18 @@
 			<span class="input-group-btn">
 				<button class="btn btn-primary btn-lg" ng-click="prevQues()">Previous</button>
 			</span>
-	    	<label>
-				<input type="radio" ng-model="answers.sex" value="1">
-				Male
-			</label>
-			<label>
-				<input type="radio" ng-model="answers.sex" value="2">
-				Female
-			</label>
+	    	<select class="form-control" ng-model="answers.employment">
+				<option value="1">Employed for wages</option>
+				<option value="2">Self-employed</option>
+				<option value="3">Out of work for 1 year or more</option>
+				<option value="4">Out of work for less than 1 year</option>
+				<option value="5">A homemaker</option>
+				<option value="6">A student</option>
+				<option value="7">Retired</option>
+				<option value="8">Unable to work</option>
+			</select>
 			<span class="input-group-btn">
-				<button type="submit" class="btn btn-primary btn-lg" ng-click="nextQues()">Submit!</button>
+				<button type="submit" class="btn btn-primary btn-lg" ng-click="nextQues()">Next</button>
 			</span>
 	    </div>
 	</form>

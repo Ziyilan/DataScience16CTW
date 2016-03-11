@@ -2,8 +2,8 @@ var express = require('express');
 var router = {};
 var path = require("path");
 var request = require('request');
-// var auth = require('../auth.js')
-var auth = require('../auth_public.js');
+var auth = require('../auth.js')
+// var auth = require('../auth_public.js');
 
 router.home = function(req, res, next) {
   res.sendFile('main.html', { root: path.join(__dirname, '../public') });

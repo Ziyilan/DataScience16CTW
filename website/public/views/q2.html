@@ -6,10 +6,10 @@
 			<span class="input-group-btn">
 				<button class="btn btn-primary btn-lg" ng-click="prevQues()">Previous</button>
 			</span>
-	    	<div class="btn-group">
-	    	    <a href="javascript:void(0)" ng-click="answers.sex = '1'" ng-class="{ 'active' : answers.sex == '1' }" class="btn">Male</a>
-	    	    <a href="javascript:void(0)" ng-click="answers.sex = '2'" ng-class="{ 'active' : answers.sex == '2' }" class="btn">Female</a>
-	    	</div>
+	    	<select class="form-control" ng-model="answers.sex">
+				<option value="1">Male</option>
+				<option value="2">Female</option>
+			</select>
 			<span class="input-group-btn">
 				<button type="submit" class="btn btn-primary btn-lg" ng-click="nextQues()">Next</button>
 			</span>

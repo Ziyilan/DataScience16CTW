@@ -4,19 +4,11 @@
 	<form class="form" role="form">
 	    <div class="input-group">
 			<span class="input-group-btn">
-				<button class="btn btn-primary btn-lg" ng-click="prevQues()">Previous</button>
-			</span>
-	    	<label>
-				<input type="radio" ng-model="answers.sex" value="1">
-				Male
-			</label>
-			<label>
-				<input type="radio" ng-model="answers.sex" value="2">
-				Female
-			</label>
-			<span class="input-group-btn">
-				<button type="submit" class="btn btn-primary btn-lg" ng-click="nextQues()">Next</button>
+				<button class="btn btn-primary btn-lg" ng-click="prevQues()">Back</button>
 			</span>
 	    </div>
 	</form>
+	<h2>You said you got: {{answers.sleep}} hours of sleep a night.</h2>
+	<h2>You are in the {{results.percentile}} percentile of all people.</h2>
+	<h2>People in your demographics got an average of {{results.demoSleep}} hours of sleep a night.</h2>
 </center>

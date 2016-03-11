@@ -8,17 +8,15 @@ var mongoose = require('mongoose');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var passport = require('passport');
 var session = require('express-session');
-// var auth = require('./auth.js');
-var auth = require('./auth_public.js');
+var auth = require('./auth.js');
+// var auth = require('./auth_public.js');
 var routes = require("./routes/index");
-
-console.log(JSON.stringify(auth.FACEBOOK_APP_ID))
 
 var app = express();
 
 var PORT = process.env.PORT || 3000;
 
-mongoose.connect(process.env.MONGO_URI);
+mongoose.connect(auth.MONGO_URI);
 var User = require('./models/model.js');
 
 app.set('view engine', 'handlebars');

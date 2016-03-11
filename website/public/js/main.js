@@ -33,6 +33,7 @@ app.config(function ($routeProvider, $locationProvider) {
 app.controller("mainController", function ($scope, $http) {
 	$scope.contentTemplatePath = "";
 	$scope.answers = {};
+	$scope.results = {};
 	
 	$http.get('/api/getUser')
 		.success(function(user) {
@@ -45,6 +46,37 @@ app.controller("mainController", function ($scope, $http) {
 			}
 		})
 		.error(handleError);
+
+	var getPercentile = function(callbackFunc) {
+		var url = 'https://dozeoff-python-server.herokuapp.com/percentile/' + $scope.answers.sleep;
+	    $http({
+	        method: 'GET',
+	        url: url
+	    })
+		    .success(function(data){
+		        // With the data succesfully returned, call our callback
+		        callbackFunc(data);
+		    })
+		    .error(handleError);
+	}
+
+	var getDemogrpahics = function(callbackFunc) {
+		var url = 'https://dozeoff-python-server.herokuapp.com/api/'
+				  + $scope.answers.age + '/'
+				  + $scope.answers.sex + '/'
+				  + $scope.answers.married + '/'
+				  + $scope.answers.children + '/'
+				  + $scope.answers.employment;
+	    $http({
+	        method: 'GET',
+	        url: url
+	    })
+		    .success(function(data){
+		        // With the data succesfully returned, call our callback
+		        callbackFunc(data);
+		    })
+		    .error(handleError);
+	}
 
 	$scope.nextQues = function() {
 		if ($scope.contentTemplatePath == "views/q1.html") {
@@ -60,7 +92,26 @@ app.controller("mainController", function ($scope, $http) {
 			$scope.contentTemplatePath = "views/q5.html"
 		}
 		else if ($scope.contentTemplatePath == "views/q5.html") {
+			$scope.contentTemplatePath = "views/q6.html"
+		}
+		else if ($scope.contentTemplatePath == "views/q6.html") {
+			// Get the results and display them
+			// $http.get('https://dozeoff-python-server.herokuapp.com/percentile/7.6')
+			// 	.success(function(data) {
+			// 		$scope.results = data;
+			// 		console.log(data)
+			// 		$scope.contentTemplatePath = "views/results.html"
+			// 	})
+			// 	.error(handleError);
 			$scope.contentTemplatePath = "views/results.html"
+			getPercentile(function (dataResp) {
+				console.log('percentile: '+dataResp);
+				$scope.results.percentile = dataResp;
+			});
+			getDemogrpahics(function (dataResp) {
+				console.log('demo sleep: '+dataResp);
+				$scope.results.demoSleep = dataResp;
+			});
 		}
 		console.log($scope.answers)
 	};
@@ -76,6 +127,12 @@ app.controller("mainController", function ($scope, $http) {
 		}
 		else if ($scope.contentTemplatePath == "views/q5.html") {
 			$scope.contentTemplatePath = "views/q4.html"
+		}
+		else if ($scope.contentTemplatePath == "views/q6.html") {
+			$scope.contentTemplatePath = "views/q5.html"
+		}
+		else if ($scope.contentTemplatePath == "views/results.html") {
+			$scope.contentTemplatePath = "views/q5.html"
 		}
 		console.log($scope.answers)
 	};
