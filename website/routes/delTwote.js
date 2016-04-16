@@ -19,3 +19,7 @@ routes.delTwotePOST = function(req, res) {
 };
 
 module.exports = routes;
+
+// I'm confused about why this route and newTwote are broken out into their
+// own files, while the rest of the handlers are in index.js. Do you guys
+// have a reason in mind?

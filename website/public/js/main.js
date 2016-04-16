@@ -21,6 +21,13 @@ if (window.location.hash && window.location.hash === "#_=_") {
     document.body.scrollLeft = _scroll.left;
     }
 }
+/* It's technically good practice to use the Angular service wrappers for
+	globals like window and document -- they're just called $window and $document.
+	The reason: if you're testing your Angular code out-of-browser, it's possible to
+	"mock" of those services (create fake ones which behave properly for the tests), while
+	it's not possible to "mock" global variables. Doesn't really matter in this context, though --
+	they behave the same way in the browser.
+ */
 
 app.config(function ($routeProvider, $locationProvider) {
 	$routeProvider.when("/", {
@@ -31,6 +38,9 @@ app.config(function ($routeProvider, $locationProvider) {
 });
 
 app.controller("mainController", function ($scope, $http) {
+	// This controller could use a bit of modularization -- it's doing at least
+	// two things (drawing the graphs, driving the view). I'll write a comment in the
+	// pull request about one way you could do this :)
 	$scope.contentTemplatePath = "";
 	$scope.times = {};
 	$scope.users = {};
@@ -46,7 +56,7 @@ app.controller("mainController", function ($scope, $http) {
 	// 	sleep: 7.2
 	// };
 	$scope.results = {};
-	
+
 	$http.get('/api/getUser')
 		.success(function(user) {
 			$scope.user = user;
@@ -84,7 +94,7 @@ app.controller("mainController", function ($scope, $http) {
 			['Person', 'Hour', { role: 'style' }],
 			['How Much You Sleep', Number($scope.answers.sleep), '#1A8763'],
 			['How Much Sleep People in Your Demographics Get', Number($scope.results.demoSleep), '#5C3292'],
-			['How Much Sleep The Average Person Gets', 7, '#5C3292'],
+			['How Much Sleep The Average Person Gets', 7, '#5C3292'], // why is data hard-coded?
 			['How Much Sleep You Should Get', 8, '#5C3292']
 		]);
 		var data2 = new google.visualization.DataTable();
@@ -127,7 +137,7 @@ app.controller("mainController", function ($scope, $http) {
 	    ['7 Hours', 24],
 	    ['8 Hours', 28.93],
 	    ['9 Hours', 4.79],
-	    ['More than 10 Hours', 7.45]
+	    ['More than 10 Hours', 7.45] // why is this data hard-coded? could it be sourced from somewhere?
 	  ]);
 	  // Set chart options
 	  var options2 = {'title':'How Many Hours Do People Sleep in USA',

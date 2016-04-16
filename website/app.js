@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var passport = require('passport');
 var session = require('express-session');
-// var auth = require('./auth.js');
+// remove commented-out code!
 var auth = require('./auth_public.js');
 var routes = require("./routes/index");
 var newTwote = require("./routes/newTwote");
@@ -27,14 +27,13 @@ app.set('view engine', 'handlebars');
 hbs.registerHelper('raw-helper', function(options) {
     return options.fn();
 });
-// app.engine('handlebars', engines.handlebars);
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ 
+app.use(session({
   secret: 'superS3CRE7',
   resave: false,
   saveUninitialized: false ,

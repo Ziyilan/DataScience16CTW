@@ -2,7 +2,6 @@ var express = require('express');
 var router = {};
 var path = require("path");
 var request = require('request');
-// var auth = require('../auth.js')
 var auth = require('../auth_public.js');
 var User = require('../models/model.js');
 var Twote = require('../models/twoteModel.js')
@@ -12,9 +11,8 @@ router.home = function(req, res, next) {
 };
 
 router.question = function(req, res, next) {
-	console.log("got here");
-	res.redirect('/')
-	// res.sendFile('question.html', { root: path.join(__dirname, '../public') });
+	res.redirect('/');
+	// clean up dead code & debugging mechanisms (ie console.logs) -- true throughout; I'm going to stop removing & commenting
 };
 
 router.board = function(req, res, next) {
@@ -30,7 +28,7 @@ router.board = function(req, res, next) {
 	            });
 	        })
 	    });
-}
+};
 
 router.searchOverSleep = function(req, res, next){
 	// var url = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=sleep&section_name=Science&type_of_material=Blog&page=0&api-key="+auth.NYTIMES_API_KEY;
@@ -72,7 +70,7 @@ router.searchSleepDep = function(req, res, next){
 
 router.getUser = function(req, res) {
 	res.json(req.user);
-}
+}; // be consistent about semicolons!
 
 router.getTwotes = function(req, res) {
 	Twote.find({})
@@ -81,6 +79,6 @@ router.getTwotes = function(req, res) {
 	    .exec(function(err, twotes) {
             res.json(twotes);
 	    });
-}
+};
 
 module.exports = router;
