@@ -5,7 +5,7 @@ var request = require('request');
 // var auth = require('../auth.js')
 var auth = require('../auth_public.js');
 var User = require('../models/model.js');
-var Twote = require('../models/twoteModel.js')
+var Twote = require('../models/twoteModel.js') //Ummm...?
 
 router.home = function(req, res, next) {
   res.sendFile('main.html', { root: path.join(__dirname, '../public') });

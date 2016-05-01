@@ -23,7 +23,7 @@ mongoose.connect(auth.MONGO_URI);
 var User = require('./models/model.js');
 
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'handlebars');
+app.set('view engine', 'handlebars');//You don't really need a view engine with angular. 
 hbs.registerHelper('raw-helper', function(options) {
     return options.fn();
 });
@@ -84,7 +84,6 @@ app.get('/api/getTwotes', routes.getTwotes);
 app.post('/newTwote', newTwote.newTwotePOST);
 app.post('/delTwote', delTwote.delTwotePOST);
 
-
 app.listen(PORT, function () {
   console.log("Application running on port:", PORT);
 });
@@ -122,6 +121,7 @@ app.get('/logout', function(req, res){
   res.send(req.user);
 })
 
+//generally it is good to have a get * route that sends your angular file so that your clientside can handle bad addresses.
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/');
